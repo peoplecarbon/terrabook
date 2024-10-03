@@ -1,5 +1,14 @@
 [book]
-authors = ["jerry.zhang"]
-language = "cn"
+title = "管理自然资本的技术与艺术"
+authors = ["Terra"]
+language = "zh"
 multilingual = false
 src = "src"
+
+[output.html]
+additional-css = ["custom.css"]
+
+[output.html.playground]
+editable = true
+copyable = true
+

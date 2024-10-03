@@ -1,5 +1,6 @@
 # Summary
 
+- [封面](./cover.md)
 - [前言](./preface.md)
 - [第一章 认识和管理自然的脆弱平衡](./chapter_1.md)
 - [第二章](./chapter_2.md)

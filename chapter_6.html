@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="light" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>第六章 生态经济学 - 管理自然资本的技术与艺术</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <link rel="stylesheet" href="custom.css">
+
+    </head>
+    <body class="sidebar-visible no-js">
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('light')
+            html.classList.add(theme);
+            var body = document.querySelector('body');
+            body.classList.remove('no-js')
+            body.classList.add('js');
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var body = document.querySelector('body');
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            body.classList.remove('sidebar-visible');
+            body.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="cover.html"><strong aria-hidden="true">1.</strong> 封面</a></li><li class="chapter-item expanded "><a href="preface.html"><strong aria-hidden="true">2.</strong> 前言</a></li><li class="chapter-item expanded "><a href="chapter_1.html"><strong aria-hidden="true">3.</strong> 第一章 认识和管理自然的脆弱平衡</a></li><li class="chapter-item expanded "><a href="chapter_2.html"><strong aria-hidden="true">4.</strong> 第二章 早期自然资本管理的技术与实践</a></li><li class="chapter-item expanded "><a href="chapter_3.html"><strong aria-hidden="true">5.</strong> 第三章 现代自然资本管理的演进与挑战</a></li><li class="chapter-item expanded "><a href="chapter_4.html"><strong aria-hidden="true">6.</strong> 第四章 人与自然相互作用的微观机理</a></li><li class="chapter-item expanded "><a href="chapter_5.html"><strong aria-hidden="true">7.</strong> 第五章 可持续发展的理论与实践</a></li><li class="chapter-item expanded "><a href="chapter_6.html" class="active"><strong aria-hidden="true">8.</strong> 第六章 生态经济学</a></li><li class="chapter-item expanded "><a href="chapter_7.html"><strong aria-hidden="true">9.</strong> 第七章 自然资本投资分析的基本理论及应用</a></li><li class="chapter-item expanded "><a href="chapter_8.html"><strong aria-hidden="true">10.</strong> 第八章 社会生态经济增长范式的理论与实践</a></li><li class="chapter-item expanded "><a href="chapter_9.html"><strong aria-hidden="true">11.</strong> 第九章 生态产品价值实现的理论与实践</a></li><li class="chapter-item expanded "><a href="chapter_10.html"><strong aria-hidden="true">12.</strong> 第十章 生态文明的理念与实践</a></li><li class="chapter-item expanded "><a href="appendix.html"><strong aria-hidden="true">13.</strong> 附录</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">管理自然资本的技术与艺术</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="第六章-生态经济学"><a class="header" href="#第六章-生态经济学">第六章 生态经济学</a></h1>
+<p>生态经济学是一门研究自然生态系统和经济系统相互关系及其对人类福祉影响的跨学科领域。它着重于如何在人类经济行为和地球的生物物理限制之间找到平衡点。</p>
+<p>生态经济学的核心目标是促进经济发展，同时保护和维持生态系统为后代提供生存所需的自然资本。</p>
+<p>图片</p>
+<p>生态经济学可以准确地定义为：</p>
+<p>整体性视角的科学：它将经济活动放在更广阔的生态和社会系统框架中进行分析，重视生态系统的完整性、人类福祉和可持续性。</p>
+<p>可持续性的追求：生态经济学强调可持续性原则，寻找经济活动和自然资源之间的平衡，以保护生态系统为长久利益着想。</p>
+<p>价值和评估：这个学科探讨如何对自然资本（如清洁的空气、水和土壤，生物多样性）进行量化和评价，这些往往在传统经济模型中被忽略或者低估。</p>
+<p>政策制订：生态经济学提供政策制定者以工具和方法，以制订可以减少环境退化、提升生态系统服务和改善人类福祉的政策。</p>
+<p>跨学科方法：生态经济学结合了经济学、生态学、政治学、哲学和其他社会科学，来理解和管理经济活动对环境的影响。</p>
+<p>当前，生态经济学的研究关注诸如生态系统服务评估、自然资本账户、污染税、市场与非市场价值的整合、环境正义以及促进绿色技术和可持续消费模式等议题。</p>
+<p>图片</p>
+<p>生态经济学的理论基础植根于它的多学科性质，融合了来自经济学、生态学、热力学、哲学和其他相关领域的概念。这些基础理论与原则包括：</p>
+<p>系统思维：理解经济系统是嵌套在更大的生态系统之内，二者相互依赖。生态经济学考虑系统的整体性和部分之间的相互作用。</p>
+<p>热力学第一和第二定律：系统的物理基础来自于热力学定律，指出能量守恒和增熵原则。这强调了能源效率和生态过程的熵增效应对经济系统的影响。</p>
+<p>生态学原理：借用生态学原理，如生物多样性的重要性、生态系统服务、自然资本的概念，以及物种与生态系统健康间的关系。</p>
+<p>边际收益递减定律：在经济中，额外的投入将产生越来越少的额外产出，而在生态经济学中，这一概念被应用于自然资源消耗。</p>
+<p>持续性原则：强调了长远角度的决策重要性，以确保地球上的资源可以为未来世代所用。</p>
+<p>经济、环境与社会福利的整合：不仅关注市场效率和经济增长，也强调社会公正和环境保护的重要性。</p>
+<p>环境限制：承认自然资源的有限性和环境容量，以及必须在这些限制下运作的经济系统。</p>
+<p>价值多元性：认识到价值不仅仅是市场价格能够反映的，还包括非市场价值，如生态系统服务、文化和生命的独特性。</p>
+<p>经济不是封闭系统：经济是开放的，依赖于能量和物质流入，同时也产生废物和污染。</p>
+<p>不确定性和预防原则：考虑到环境效应中的不确定性，主张采取预防措施，以防止可能的负面影响，尤其是当这些影响可能是不可逆的时候。</p>
+<p>公平和分配正义：着眼于资源分配问题，确保当前和未来世代人民能够享受健康和富有成效的生活。</p>
+<p>生态经济学的跨学科特性确实为这门学科带来了一定的挑战。融合不同学科的观点和方法可能导致理论和实践上的复杂性，甚至可能存在观点上的自相矛盾和内在冲突。然而，这种跨学科的方法也正是生态经济学的一大特色和长处。从以下几点可以理解它的跨学科特性如何影响其理论发展：</p>
+<p>理论的丰富性：生态经济学以其独特的方式集合了多种学科的理论和实践，这有助于深化我们对经济-生态互动的理解。尽管这导致了一些理论上的复杂性，但它也使得生态经济学能够从多角度审视和解决问题。</p>
+<p>现实世界的复杂性：生态系统和经济系统本身就是复杂和多层次的；一个多学科的方法能够更接近地模拟现实世界的复杂性，并为决策提供更全面的信息和工具。</p>
+<p>创新解决方案：跨学科合作催生了创新，促进了传统边界之外的思考。生态经济学家常常能够发现新的方法和策略来处理持久的问题。</p>
+<p>更广泛的应用领域：跨学科的特色使得生态经济学能够应用于广泛的问题和背景，例如气候变化、生物多样性损失、资源管理、可持续发展等。</p>
+<p>理论的完整性：生态经济学试图建立一套包含环境和社会维度的经济分析框架，从而弥补传统经济学忽视环境限制和社会福祉的缺陷。</p>
+<p>图片</p>
+<p>让我们以“生态补偿机制”为例来说明生态经济学如何集合多种学科的理论和实践。</p>
+<p>生态补偿机制（如碳交易市场或支付生态系统服务）是一个由生态经济学提出并支持的概念。这个机制旨在为生态系统提供的服务（如碳封存、水源涵养、土壤侵蚀控制和生物多样性保护）提供经济激励。</p>
+<p>经济学：使用经济工具来为生态服务定价，创建市场或支付机制使得保护环境成为经济上有利的决定。在此过程中，信号价格理论和需求管理策略被用到实践中。</p>
+<p>生态学：识别和量化生态系统服务，例如通过评估森林的碳汇能力或湿地的水净化功能。生态学提供数据支持并指引着补偿的生态基础和生物多样性的价值。</p>
+<p>政治学与法学：制定国家层面和国际协议的法律框架，确保生态补偿机制的有效性和公平性。这涉及治理、权利和政策实施的方面。</p>
+<p>环境伦理学：考虑到自然环境和物种应被赋予内在价值，不仅是其对人类的直接经济价值，这影响政策制定和公众参与的方式。</p>
+<p>社会学：研究如何最有效地设计和实施这些机制，以确保社区参与并解决潜在的社会正义问题，如确保弱势群体不会受到不公正的环境负担。</p>
+<p>管理学：设计高效的操作系统，监测和报告机制来确保市场或支付体系达到预期的环境和经济目标。</p>
+<p>哲学：探讨怎样平等地对待当前世代和未来世代的需要，以及必须尊重的自然生物的权利。</p>
+<p>通过这个例子，我们可以看到，生态经济学汇集了来自不同学科的理论和思想，形成一个整合的框架来解决实际问题。这种多学科集成方法有助于我们全面地理解问题的性质，并且制定出更为有效和全面的解决方案。</p>
+<p>生态经济学直面现实世界中生态系统和经济系统的复杂、多层次的性质。以亚马逊雨林为例，可以看到生态经济学与传统经济学处理现实世界的极大差异：</p>
+<p>亚马逊雨林，被称为地球之肺，是全球最大的热带雨林，对全球气候有着深远的影响。它的健康状况直接影响到地球的碳循环和生物多样性。雨林通过光合作用吸收大量的二氧化碳，有助于减缓全球变暖。同时，它的存在也对本地和全球的水循环起着关键作用，维持降水模式和天气系统的平衡。</p>
+<p>然而，出于经济发展的考虑，如农业扩张（尤其是牛肉和大豆生产）、矿产开采、森林采伐和基础设施建设等活动，亚马逊雨林持续面临巨大压力。这样的经济系统发展模式给生态系统带来了严重破坏，导致森林面积减少、碳排放增加、生物多样性损失以及对土著社区的负面影响。</p>
+<p>这个例子体现了以下几点复杂性和多层次性：</p>
+<p>生态复杂性：雨林是一个复杂的生态系统，具有自己内在的动态平衡，以及种群、栖息地和生态过程的复杂互作。</p>
+<p>经济交互：雨林地区的经济活动，诸如农业和采矿，与生态系统的健康紧密相连，这些活动的经济收益需要与生态成本进行权衡。</p>
+<p>社会结构：土著社区和当地居民依赖森林的资源生存，它们的生活方式和文化传统与雨林直接相关。</p>
+<p>全球互联：亚马逊雨林的状态对全球气候系统有重要影响，使得其保护成为国际社会关注的问题。</p>
+<p>政策挑战：制定对策涉及不同层次的决策—从当地与国家的法规，到国际协议，如巴黎气候协定。</p>
+<p>科学不确定性：预测森林退化的长期环境后果有困难，表现出对生态系统和气候影响的不确定性。</p>
+<p>现实世界中，生态经济学必须解决这种复杂性，通过其独特的多学科工具和方法，来寻找平衡经济发展和生态系统保护之间的方法。这就需要不仅仅考虑短期经济利益，而且还要关注长期生态健康和社会福祉。</p>
+<p>尽管生态经济学的跨学科性可能带来一定程度的理论与方法上的模糊性，但是多数学者和实践者认为这种整合是必要的，因为它反映了生态系统与人类经济行为的真实交互复杂性。当然，确保跨学科合作的有效性和为实际政策制定提供明确指导仍然是生态经济学需要继续关注和深化的领域。</p>
+<p>图片</p>
+<p>生态经济学通过多学科的视角来理解和解决现代资本主义发展对生态系统的影响，提供了方法和工具以应对环境问题，尤其是气候变化和生物多样性的丧失。生态经济学家建议以下几种策略和解决方案：</p>
+<p>内部化环境成本：改变传统经济学中对自然资源的“外部化”处理，通过税收、排放交易等手段，让污染者为环境破坏的成本负责。</p>
+<p>可持续性评估：对项目和政策进行全面的环境影响评估和生态风险评估，确保决策考虑长远的生态后果。</p>
+<p>绿色会计和国民生产总值（GDP）的再定义：推行绿色会计体系，将自然资本和生态系统服务纳入经济衡量指标中，以反映真实的经济健康状况。</p>
+<p>促进绿色技术和经济转型：鼓励研发和采用低碳和清洁技术，推动向可再生能源的转换，减少对化石燃料的依赖。</p>
+<p>可持续消费和产品寿命周期管理：推广生态设计、循环经济和产品寿命周期管理，减少资源消耗和废物产生。</p>
+<p>生态补偿与生态服务支付：通过支付生态系统服务（如碳汇、水源保护和生物多样性保护）来为保护环境的努力提供经济激励。</p>
+<p>制定环境法规与政策：建立并实施环保法律、政策和标准，保护环境免遭污染和破坏。</p>
+<p>推行全球合作：鉴于气候变化和生物多样性的问题具有全球性，促进国际合作和遵循国际环境协议是至关重要的。</p>
+<p>教育与公众参与：通过教育提高公众的环境意识，促进社会环保行动，并加强公众对环境政策的参与和监督。</p>
+<p>综合政策设计：制定政策时需要注意其多面性影响，确保经济、社会和环境目标之间的协同效应。</p>
+<p>生态经济学强调解决问题必须从系统的角度来看待经济活动与环境之间的互动，而不是孤立地对待。面对气候变化和生物多样性的丧失等全球性挑战，解决方案需要集体行动、长远规划和政策创新，而生态经济学提供了关于这些问题的全面分析和实用框架。</p>
+<p>自然资本是生态经济学的一个核心概念，基本上是指地球上的所有自然资源和生态系统，它们为人类社会提供生命支持服务和物质资源。这些资源和服务包括空气质量、水资源、土壤肥力、食物生产、气候调节、洪水控制、疾病控制和休闲空间等。自然资本认识到自然环境不仅是经济活动的背景，而且是支撑所有人类和非人类生物生存的基础。</p>
+<p>生态经济学与自然资本的关系可以从以下几个方面理解：</p>
+<p>理论和方法：生态经济学提供了一套框架和方法来评估自然资本的价值，并考虑这些资本在经济决策中的角色。</p>
+<p>可持续发展：生态经济学强调经济活动应在不削弱自然资本的前提下进行，以维持这些资本并传递给未来世代。</p>
+<p>整合经济与环境衡量指标：传统经济指标（如GDP）很少反映环境的损耗或改善。生态经济学提倡将自然资本保护和高效使用纳入到国家和企业的计量体系中。</p>
+<p>政策设计：生态经济学在公共政策制定中强调保护自然资本的重要性，鼓励采取生态税、补偿机制和可持续资源管理政策。</p>
+<p>经济-生态系统管理：通过辨识自然资本的直接和间接益处，生态经济学支持对资源的可持续管理和保护，减少生态足迹。</p>
+<p>积极的人类干预：生态经济学认为通过恢复和保护生态系统服务，人类不仅是自然资本的用户，也可以是其增强者。</p>
+<p>环境正义：自然资本的恢复和合理分配可以改善弱势群体的生活条件，生态经济学提倡社会和环境的权利应被公平对待。</p>
+<p>生态经济学用于评估、保护和恢复自然资本，并确保其能够长期为社会提供必要服务。这种关系突出了环境和经济的紧密相连，并指导着社会如何以可持续的方式利用和管理自然资源。通过这种方法，生态经济学试图修复传统的经济范式，强调了经济健康与生态系统健康之间的联系。</p>
+<p>生态经济学作为一门寻求在经济发展与环境保护之间实现平衡的学科，面临着多项挑战。这些挑战主要包括以下几方面：</p>
+<p>多学科整合的困难：生态经济学需要整合生态学、经济学、社会学等多个学科的理论与方法。这种整合在实践中可能相当复杂，不同学科之间的差异可能导致理论框架和方法论的混乱。</p>
+<p>环境价值的量化：如何量化和内部化环境服务和自然资本的价值是一个主要挑战，特别是对于那些不易于用货币衡量的生态系服务和生物多样性价值。</p>
+<p>政策制定和执行难度：推动政府制定并实施可持续的环境政策存在挑战，因为这涉及到与现行经济增长模式相抵触的决策，以及需要面对强大的政治和经济利益团体的反对。</p>
+<p>社会-生态系统动态的理解：生态经济学需要更好地理解社会-生态系统之间复杂的相互作用与反馈循环，而这些通常呈现出非线性特征，难以预测。</p>
+<p>环境不确定性与风险管理：由于生态系统的复杂性和过程的不确定性，制定有效的预防和适应措施来应对潜在的环境风险和后果是一项挑战。</p>
+<p>经济结构转型：传统的以工业化和经济增长为核心的发展模式根深蒂固，转向更为可持续的经济结构涉及广泛的社会经济变革，并可能触动现存权力结构。</p>
+<p>全球和地方行动的协调：如何协调全球尺度下的环境治理和地方层面上具体实践的行动是一大挑战，尤其是在缺乏全球共识或合作机制的情况下。</p>
+<p>社会意识和行为改变：公众意识提高和行为改变通常进展缓慢，促成这种转变需要时间和坚持不懈的教育努力。</p>
+<p>跨代公平和环境正义：确保当前和未来世代都能享有公平资源分配和环境质量，以及不同社会群体之间的公平问题，是持续存在的挑战。</p>
+<p>技术创新与应用：虽然技术创新被视为解决环境问题的关键途径，但技术的开发、普及和应用过程中可能会遇到技术、法律、经济和社会障碍。</p>
+<p>生态经济学试图在这些挑战中找到创造性的解决方案，推动形成一个更加可持续和公正的全球经济体。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="chapter_5.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="chapter_7.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="chapter_5.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="chapter_7.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="ace.js"></script>
+        <script src="editor.js"></script>
+        <script src="mode-rust.js"></script>
+        <script src="theme-dawn.js"></script>
+        <script src="theme-tomorrow_night.js"></script>
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

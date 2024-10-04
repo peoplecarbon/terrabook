@@ -3,7 +3,7 @@ name: Deploy mdBook to GitHub Pages with Custom Domain
 on:
   push:
     branches:
-      - master  
+      - main
 
 jobs:
   deploy:

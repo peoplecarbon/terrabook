@@ -1,12 +1,14 @@
 [book]
 title = "管理自然资本的技术与艺术"
-authors = ["Terra"]
+authors = ["张家林"]
 language = "zh"
 multilingual = false
 src = "src"
 
 [output.html]
 additional-css = ["custom.css"]
+site-url = "terrabook.peoplecarbon.org"
+git-repository-url = "https://github.com/peoplecarbon/terrabook"
 
 [output.html.playground]
 editable = true

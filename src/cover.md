@@ -1,5 +1,5 @@
 <div style="text-align: center; padding-top: 50px;">
 
-![cover](./img/cover.png)
+![cover](./img/BOOKCOVER.png)
 
 </div>

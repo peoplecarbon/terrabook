@@ -2,7 +2,7 @@
 title = "管理自然资本的技术与艺术"
 authors = ["张家林"]
 language = "zh"
-multilingual = false
+multilingual = true
 src = "src"
 
 [output.html]
@@ -14,3 +14,10 @@ git-repository-url = "https://github.com/peoplecarbon/terrabook"
 editable = true
 copyable = true
 
+
+[languages]
+[languages.zh]
+name = "中文"
+
+[languages.en]
+name = "English"

@@ -12,3 +12,4 @@
 - [第八章 社会生态经济增长范式的理论与实践](./chapter_8.md)
 - [第九章 生态产品价值实现的理论与实践](./chapter_9.md)
 - [后记](./afterword.md)
+- [参考文献](./references.md)

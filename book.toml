@@ -7,7 +7,7 @@ src = "src"
 
 [output.html]
 additional-css = ["custom.css"]
-site-url = "terrabook.peoplecarbon.org"
+site-url = "www.terrabook.org"
 git-repository-url = "https://github.com/peoplecarbon/terrabook"
 
 [output.html.playground]
